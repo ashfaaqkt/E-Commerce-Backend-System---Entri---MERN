@@ -39,22 +39,59 @@
                 <p>Your secure link is active. Accessing backend data modules...</p>
             </header>
 
-            <div class="grid-modules">
-                <!-- User Profile Module -->
-                <div class="module-card glass-effect">
-                    <h3>Operator Profile</h3>
-                    <div id="profile-data">
-                        <p class="loading-text">Decrypting...</p>
+            <div id="tab-intelligence" class="dashboard-tab active-tab">
+                <div class="grid-modules">
+                    <!-- User Profile Module -->
+                    <div class="module-card glass-effect">
+                        <h3>Operator Profile</h3>
+                        <div id="profile-data">
+                            <p class="loading-text">Decrypting...</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Recommendations Module -->
+                    <div class="module-card glass-effect lg-col">
+                        <h3>RapidMiner Predictive Engine</h3>
+                        <p class="sub-text mb-2">Analyzing heuristic behavior based on your order history matrix.</p>
+                        <div id="recommendations-data" class="products-grid">
+                            <p class="loading-text">Consulting Neural Network...</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Product Recommendations Module -->
-                <div class="module-card glass-effect lg-col">
-                    <h3>RapidMiner Predictive Engine</h3>
-                    <p class="sub-text mb-2">Analyzing heuristic behavior based on your order history matrix.</p>
-                    <div id="recommendations-data" class="products-grid">
-                        <p class="loading-text">Consulting Neural Network...</p>
+            <!-- Data Matrix Tab -->
+            <div id="tab-data-matrix" class="dashboard-tab" style="display: none;">
+                <div class="module-card glass-effect mb-2">
+                    <h3>Data Matrix: Products Grid</h3>
+                    <p class="sub-text mb-2">Live synchronization with MongoDB Products Cluster.</p>
+                    <div id="all-products-grid" class="products-grid">
+                        <p class="loading-text">Fetching Node Data...</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- System Logs Tab -->
+            <div id="tab-system-logs" class="dashboard-tab" style="display: none;">
+                <div class="module-card glass-effect">
+                    <h3>System Action Logs</h3>
+                    <p class="sub-text mb-2">Recent transactions and orders bound to your ID Stamp.</p>
+                    <div id="orders-list">
+                        <p class="loading-text">Retrieving Transaction Blocks...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Protocols Tab -->
+            <div id="tab-security" class="dashboard-tab" style="display: none;">
+                <div class="module-card glass-effect">
+                    <h3 style="color: #f56565;">Active Security Protocols</h3>
+                    <ul style="list-style-type: square; padding-left: 20px; color: #a0aec0; margin-top: 1rem;">
+                        <li><strong>JWT Encryption:</strong> ONLINE (RSA-256)</li>
+                        <li><strong>Bcrypt Hashing:</strong> 10 Rounds Enabled</li>
+                        <li><strong>CORS Policy:</strong> Strictly Enforced</li>
+                        <li><strong>RBAC Routing:</strong> Active</li>
+                    </ul>
                 </div>
             </div>
         </main>
