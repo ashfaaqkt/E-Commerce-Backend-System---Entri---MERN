@@ -1,6 +1,50 @@
 // Base API URL
 const apiUrl = '/api';
 
+// --- Custom UI Elements Showcase Functionality ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme Selector Logic
+    const themeSelector = document.querySelector('.custom-select');
+    if (themeSelector) {
+        themeSelector.addEventListener('change', (e) => {
+            const root = document.documentElement;
+            const theme = e.target.value;
+
+            if (theme === 'Neon Pink') {
+                root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #24001c 0%, #790956 35%, #ff00d4 100%)');
+                root.style.setProperty('--text-glow', '#ff00d4');
+                root.style.setProperty('--accent-blue', '#ff00d4');
+                root.style.setProperty('--accent-pink', '#00d4ff');
+            } else if (theme === 'Matrix Green') {
+                root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #001202 0%, #033f00 35%, #00ff26 100%)');
+                root.style.setProperty('--text-glow', '#00ff26');
+                root.style.setProperty('--accent-blue', '#00ff26');
+                root.style.setProperty('--accent-pink', '#00ffff');
+            } else {
+                // Default Cyber Blue
+                root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%)');
+                root.style.setProperty('--text-glow', '#00ffff');
+                root.style.setProperty('--accent-blue', '#00d4ff');
+                root.style.setProperty('--accent-pink', '#d400ff');
+            }
+        });
+    }
+
+    // Predictive Engine Checkbox Logic
+    const predictiveCheckbox = document.querySelector('.custom-checkbox input');
+    if (predictiveCheckbox) {
+        predictiveCheckbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                alert("Predictive Engine Enabled: Analyzing neural pathways...");
+                console.log("Predictive Engine Status: ONLINE");
+            } else {
+                alert("Predictive Engine Disabled: Reverting to standard operations.");
+                console.log("Predictive Engine Status: OFFLINE");
+            }
+        });
+    }
+});
+
 // Modal Handlers
 function openModal(modalId) {
     document.getElementById(modalId).style.display = 'flex';
