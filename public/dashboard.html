@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoStore Dashboard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+    <!-- Navigation -->
+    <nav class="navbar glass-effect">
+        <div class="logo">EvoStore Terminal</div>
+        <div class="nav-links">
+            <span id="user-name-display" class="gradient-text mr-2"></span>
+            <button id="logout-btn" class="btn-glow-alt" onclick="logout()">Terminate Link</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-effect">
+            <ul class="sidebar-nav">
+                <li class="active">Intelligence Center</li>
+                <li>Data Matrix</li>
+                <li>System Logs</li>
+                <li>Security Protocols</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1 class="gradient-text">Welcome to the Core, Operator</h1>
+                <p>Your secure link is active. Accessing backend data modules...</p>
+            </header>
+
+            <div class="grid-modules">
+                <!-- User Profile Module -->
+                <div class="module-card glass-effect">
+                    <h3>Operator Profile</h3>
+                    <div id="profile-data">
+                        <p class="loading-text">Decrypting...</p>
+                    </div>
+                </div>
+
+                <!-- Product Recommendations Module -->
+                <div class="module-card glass-effect lg-col">
+                    <h3>RapidMiner Predictive Engine</h3>
+                    <p class="sub-text mb-2">Analyzing heuristic behavior based on your order history matrix.</p>
+                    <div id="recommendations-data" class="products-grid">
+                        <p class="loading-text">Consulting Neural Network...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Check authentication
+        if (!localStorage.getItem('token')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>

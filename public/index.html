@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ME4 E-Commerce Intelligence Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar glass-effect">
+        <div class="logo">EvoStore AI</div>
+        <div class="nav-links">
+            <button id="nav-login-btn" class="btn-glow" onclick="openModal('login-modal')">Sign In</button>
+            <button id="nav-signup-btn" class="btn-glow-alt" onclick="openModal('signup-modal')">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="gradient-text">The Future of E-Commerce</h1>
+            <p>Experience a seamless shopping experience powered by Mocked Predictive Analytics and Robust Security.</p>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="openModal('signup-modal')">Get Started</button>
+                <a href="#features" class="btn-secondary">Explore Engine</a>
+            </div>
+            
+        </div>
+        <div class="hero-visual">
+            <div class="orb"></div>
+            <div class="orb orb-2"></div>
+            <div class="data-grid"></div>
+        </div>
+    </header>
+
+    <!-- Features Overview -->
+    <section id="features" class="features-section">
+        <h2 class="section-title gradient-text">System Capabilities</h2>
+        <div class="features-grid">
+            <div class="feature-card glass-effect">
+                <h3>JWT Authentication</h3>
+                <p>Military-grade bcrypt token mapping and RBAC access routing protocols.</p>
+            </div>
+            <div class="feature-card glass-effect">
+                <h3>RapidMiner Intelligence</h3>
+                <p>Mocked integration that analyzes behavioral matrices for product recommendations.</p>
+            </div>
+            <div class="feature-card glass-effect">
+                <h3>Dynamic Rendering</h3>
+                <p>Asynchronous data streaming from our Node/Express/MongoDB engine.</p>
+            </div>
+        </div>
+        
+        <!-- Showcase Form Elements -->
+        <div class="showcase-card glass-effect">
+            <h3>Custom UI Elements Showcase</h3>
+            <div class="form-group custom-select-wrapper">
+                <label>Theme Selector</label>
+                <select class="custom-select">
+                    <option>Cyber Blue</option>
+                    <option>Neon Pink</option>
+                    <option>Matrix Green</option>
+                </select>
+            </div>
+            <label class="custom-checkbox">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                Enable Predictive Engine
+            </label>
+        </div>
+    </section>
+
+    <!-- Modals -->
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content glass-effect">
+            <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
+            <h2 class="gradient-text">Sign In Status</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email Node</label>
+                    <input type="email" id="login-email" required placeholder="system@evostore.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Access Hash</label>
+                    <input type="password" id="login-password" required placeholder="••••••••">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary w-100">Initialize Link</button>
+                </div>
+                <div class="text-center mt-2">
+                    <a href="#" onclick="openModal('forgot-modal'); closeModal('login-modal')" class="link-subtle">Forgot Access Hash?</a>
+                </div>
+            </form>
+            <p id="login-error" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content glass-effect">
+            <span class="close-btn" onclick="closeModal('signup-modal')">&times;</span>
+            <h2 class="gradient-text">Register Node</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Alias</label>
+                    <input type="text" id="signup-name" required placeholder="User-1">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Transmission Node (Email)</label>
+                    <input type="email" id="signup-email" required placeholder="user@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Encryption Key (Password)</label>
+                    <input type="password" id="signup-password" required placeholder="••••••••" minlength="6">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary w-100">Establish Link</button>
+                </div>
+            </form>
+            <p id="signup-error" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgot-modal" class="modal">
+        <div class="modal-content glass-effect">
+            <span class="close-btn" onclick="closeModal('forgot-modal')">&times;</span>
+            <h2 class="gradient-text">Recover Access</h2>
+            <form id="forgot-form" class="active">
+                <div class="form-group">
+                    <label for="forgot-email">Identified Email</label>
+                    <input type="email" id="forgot-email" required placeholder="user@domain.com">
+                </div>
+                <button type="submit" class="btn-primary w-100">Send Recovery Pulse (OTP)</button>
+                <p id="forgot-error" class="error-msg"></p>
+            </form>
+
+            <form id="reset-form" style="display: none;">
+                <p class="success-msg">OTP Sent. Check the transmission node.</p>
+                <div class="form-group">
+                    <label for="reset-otp">Recovery Pulse (OTP)</label>
+                    <input type="text" id="reset-otp" required placeholder="000000">
+                </div>
+                <div class="form-group">
+                    <label for="reset-password">New Encryption Key (Password)</label>
+                    <input type="password" id="reset-password" required placeholder="••••••••" minlength="6">
+                </div>
+                <button type="submit" class="btn-primary w-100">Reinitialize Link</button>
+                <p id="reset-error" class="error-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <footer class="glass-effect footer">
+        <p>Built by <strong>Ashfaaq Feroz Muhammad</strong></p>
+        <p>Credit: Entri Elevate - MERN</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
