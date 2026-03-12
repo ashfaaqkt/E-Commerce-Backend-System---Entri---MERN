@@ -6,11 +6,11 @@ A robust, scalable backend and futuristic frontend application for an E-Commerce
 **Credit:** Entri Elevate - MERN
 
 ## Core Features
-1. **Authentication & Authorization**: JWT token-based authentication, bcrypt password encryption, OTP recovery pulse, and role-based access.
+1. **Authentication & Authorization**: JWT token-based authentication, bcrypt password encryption, custom Role selection dropdown, OTP recovery, and role-based access.
 2. **CRUD Operations**: Efficient API endpoints for Products, Orders, and User Profiles.
 3. **Product Filtering & Search**: Advanced regex search with custom pricing and category filtering capabilities.
-4. **Predictive Analytics (Simulation)**: RapidMiner style heuristic-based algorithmic intelligence to suggest product recommendations.
-5. **Futuristic Frontend**: Custom blue-to-black gradient UI with glassmorphism, dynamic animations, modal popups, and secure token storage.
+4. **Predictive Analytics (Simulation)**: RapidMiner style heuristic-based algorithmic intelligence to suggest product recommendations mapping accurate user categories. 
+5. **Modern Minimalist Frontend**: Clean white and deep blue theme with liquid glassmorphism inputs, animated custom dropdowns, password visibility toggles, and secure token storage.
 
 ## Folder Structure
 ```
@@ -65,6 +65,6 @@ ME4 ecommerce-backend 1.0/
    npm run dev
    ```
 4. Access Frontend Toolkit:
-   Navigate to `http://localhost:5000` inside a modern web browser.
+   Navigate to `http://localhost:5001` inside a modern web browser.
 
 See `deployment_instructions.txt` for server setup and Vercel hosting instructions.

@@ -41,7 +41,9 @@ exports.getRecommendations = async (req, res, next) => {
         if (recommendedProducts.length < 5) {
             const topProducts = await Product.find()
                 .sort({ averageRating: -1 })
-                .limit(5);
+                .limit(5)
+                .lean()
+                .exec();
 
             // Combine and unique by ID
             const combined = [...recommendedProducts, ...topProducts];

@@ -1,49 +1,33 @@
 // Base API URL
 const apiUrl = '/api';
 
-// --- Custom UI Elements Showcase Functionality ---
-document.addEventListener('DOMContentLoaded', () => {
-    // Theme Selector Logic
-    const themeSelector = document.querySelector('.custom-select');
-    if (themeSelector) {
-        themeSelector.addEventListener('change', (e) => {
-            const root = document.documentElement;
-            const theme = e.target.value;
+// ── Custom Role Dropdown Logic ─────────────
+(function () {
+    const dropdown = document.getElementById('role-dropdown');
+    if (!dropdown) return;
+    const selected = document.getElementById('role-selected');
+    const list = document.getElementById('role-list');
+    const hiddenInput = document.getElementById('signup-role');
+    const label = document.getElementById('role-label');
 
-            if (theme === 'Neon Pink') {
-                root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #24001c 0%, #790956 35%, #ff00d4 100%)');
-                root.style.setProperty('--text-glow', '#ff00d4');
-                root.style.setProperty('--accent-blue', '#ff00d4');
-                root.style.setProperty('--accent-pink', '#00d4ff');
-            } else if (theme === 'Matrix Green') {
-                root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #001202 0%, #033f00 35%, #00ff26 100%)');
-                root.style.setProperty('--text-glow', '#00ff26');
-                root.style.setProperty('--accent-blue', '#00ff26');
-                root.style.setProperty('--accent-pink', '#00ffff');
-            } else {
-                // Default Cyber Blue
-                root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%)');
-                root.style.setProperty('--text-glow', '#00ffff');
-                root.style.setProperty('--accent-blue', '#00d4ff');
-                root.style.setProperty('--accent-pink', '#d400ff');
-            }
-        });
-    }
+    selected.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+    });
 
-    // Predictive Engine Checkbox Logic
-    const predictiveCheckbox = document.querySelector('.custom-checkbox input');
-    if (predictiveCheckbox) {
-        predictiveCheckbox.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                alert("Predictive Engine Enabled: Analyzing neural pathways...");
-                console.log("Predictive Engine Status: ONLINE");
-            } else {
-                alert("Predictive Engine Disabled: Reverting to standard operations.");
-                console.log("Predictive Engine Status: OFFLINE");
-            }
+    list.querySelectorAll('.custom-dropdown__item').forEach(item => {
+        item.addEventListener('click', () => {
+            list.querySelectorAll('.custom-dropdown__item').forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            hiddenInput.value = item.dataset.value;
+            label.textContent = item.textContent.trim();
+            dropdown.classList.remove('open');
         });
-    }
-});
+    });
+
+    document.addEventListener('click', () => dropdown.classList.remove('open'));
+})();
+
 
 // Modal Handlers
 function openModal(modalId) {
@@ -93,13 +77,14 @@ if (document.getElementById('login-form')) {
         const name = document.getElementById('signup-name').value;
         const email = document.getElementById('signup-email').value;
         const password = document.getElementById('signup-password').value;
+        const role = document.getElementById('signup-role')?.value || 'user';
         const errorMsg = document.getElementById('signup-error');
 
         try {
             const res = await fetch(`${apiUrl}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, password })
+                body: JSON.stringify({ name, email, password, role })
             });
             const data = await res.json();
 
@@ -220,7 +205,7 @@ if (window.location.pathname.includes('dashboard.html')) {
                 `;
             }
         } catch (err) {
-            console.error('Failed to load profile');
+            document.getElementById('profile-data').innerHTML = '<p class="error-msg">Failed to load profile data.</p>';
         }
 
         // Fetch Analytics/Recommendations
@@ -325,4 +310,21 @@ if (window.location.pathname.includes('dashboard.html')) {
 function logout() {
     localStorage.removeItem('token');
     window.location.href = 'index.html';
+}
+
+function togglePassword(inputId, btn) {
+    const input = document.getElementById(inputId);
+    const eyeIcon    = btn.querySelector('.eye-icon');
+    const eyeOffIcon = btn.querySelector('.eye-off-icon');
+    if (input.type === 'password') {
+        input.type = 'text';
+        eyeIcon.style.display    = 'none';
+        eyeOffIcon.style.display = 'block';
+        btn.setAttribute('aria-label', 'Hide password');
+    } else {
+        input.type = 'password';
+        eyeIcon.style.display    = 'block';
+        eyeOffIcon.style.display = 'none';
+        btn.setAttribute('aria-label', 'Show password');
+    }
 }

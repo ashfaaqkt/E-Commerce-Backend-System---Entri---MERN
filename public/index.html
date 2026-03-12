@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ME4 E-Commerce Intelligence Engine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <title>EvoStore AI — E-Commerce Intelligence Engine</title>
+    <meta name="description"
+        content="A futuristic e-commerce engine powered by JWT authentication, RBAC, and predictive analytics.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
     <!-- Navigation -->
     <nav class="navbar glass-effect">
-        <div class="logo">EvoStore AI</div>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+        </div>
         <div class="nav-links">
             <button id="nav-login-btn" class="btn-glow" onclick="openModal('login-modal')">Sign In</button>
             <button id="nav-signup-btn" class="btn-glow-alt" onclick="openModal('signup-modal')">Sign Up</button>
@@ -20,13 +34,11 @@
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
-            <h1 class="gradient-text">The Future of E-Commerce</h1>
-            <p>Experience a seamless shopping experience powered by Mocked Predictive Analytics and Robust Security.</p>
+            <h1 class="gradient-text">E-Commerce Backend</h1>
             <div class="hero-actions">
                 <button class="btn-primary" onclick="openModal('signup-modal')">Get Started</button>
                 <a href="#features" class="btn-secondary">Explore Engine</a>
             </div>
-            
         </div>
         <div class="hero-visual">
             <div class="orb"></div>
@@ -35,64 +47,95 @@
         </div>
     </header>
 
-    <!-- Features Overview -->
+    <!-- Stats Row -->
+    <div class="hero-stats">
+        <div class="stat-item">
+            <div class="stat-value">JWT</div>
+            <div class="stat-label">RSA-256 Auth</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">RBAC</div>
+            <div class="stat-label">Role-based Access</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">REST Coverage</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">AI</div>
+            <div class="stat-label">Recommendation Engine</div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Features Section -->
     <section id="features" class="features-section">
+        <p class="section-eyebrow">What's Inside</p>
         <h2 class="section-title gradient-text">System Capabilities</h2>
+        <p class="section-subtitle">A production-grade stack with enterprise patterns, designed for scale and security
+            from day one.</p>
+
         <div class="features-grid">
             <div class="feature-card glass-effect">
+                <div class="feature-icon">🔐</div>
                 <h3>JWT Authentication</h3>
-                <p>Military-grade bcrypt token mapping and RBAC access routing protocols.</p>
+                <p>Military-grade bcrypt hashing with RSA-256 token mapping and role-based access control routing.</p>
             </div>
             <div class="feature-card glass-effect">
+                <div class="feature-icon">🧠</div>
                 <h3>RapidMiner Intelligence</h3>
-                <p>Mocked integration that analyzes behavioral matrices for product recommendations.</p>
+                <p>Mocked recommendation engine that analyses behavioral matrices from your order history in real time.
+                </p>
             </div>
             <div class="feature-card glass-effect">
+                <div class="feature-icon">⚡</div>
                 <h3>Dynamic Rendering</h3>
-                <p>Asynchronous data streaming from our Node/Express/MongoDB engine.</p>
+                <p>Asynchronous data streaming from our Node.js / Express / MongoDB backend via REST APIs.</p>
             </div>
         </div>
-        
-        <!-- Showcase Form Elements -->
-        <div class="showcase-card glass-effect">
-            <h3>Custom UI Elements Showcase</h3>
-            <div class="form-group custom-select-wrapper">
-                <label>Theme Selector</label>
-                <select class="custom-select">
-                    <option>Cyber Blue</option>
-                    <option>Neon Pink</option>
-                    <option>Matrix Green</option>
-                </select>
-            </div>
-            <label class="custom-checkbox">
-                <input type="checkbox" checked>
-                <span class="checkmark"></span>
-                Enable Predictive Engine
-            </label>
-        </div>
+
     </section>
 
-    <!-- Modals -->
+    <!-- ── Modals ─────────────────────────── -->
 
     <!-- Login Modal -->
     <div id="login-modal" class="modal">
         <div class="modal-content glass-effect">
-            <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
-            <h2 class="gradient-text">Sign In Status</h2>
+            <span class="close-btn" onclick="closeModal('login-modal')">✕</span>
+            <h2 class="gradient-text">Sign In</h2>
             <form id="login-form">
                 <div class="form-group">
-                    <label for="login-email">Email Node</label>
-                    <input type="email" id="login-email" required placeholder="system@evostore.com">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required placeholder="you@evostore.com">
                 </div>
                 <div class="form-group">
-                    <label for="login-password">Access Hash</label>
-                    <input type="password" id="login-password" required placeholder="••••••••">
+                    <label for="login-password">Password</label>
+                    <div class="pw-wrapper">
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                        <button type="button" class="pw-toggle" onclick="togglePassword('login-password', this)"
+                            tabindex="-1" aria-label="Show password">
+                            <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg class="eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" width="18" height="18" style="display:none">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn-primary w-100">Initialize Link</button>
+                    <button type="submit" class="btn-primary w-100">Sign In</button>
                 </div>
                 <div class="text-center mt-2">
-                    <a href="#" onclick="openModal('forgot-modal'); closeModal('login-modal')" class="link-subtle">Forgot Access Hash?</a>
+                    <a href="#" onclick="openModal('forgot-modal'); closeModal('login-modal')"
+                        class="link-subtle">Forgot your password?</a>
                 </div>
             </form>
             <p id="login-error" class="error-msg"></p>
@@ -102,23 +145,62 @@
     <!-- Sign Up Modal -->
     <div id="signup-modal" class="modal">
         <div class="modal-content glass-effect">
-            <span class="close-btn" onclick="closeModal('signup-modal')">&times;</span>
-            <h2 class="gradient-text">Register Node</h2>
+            <span class="close-btn" onclick="closeModal('signup-modal')">✕</span>
+            <h2 class="gradient-text">Create Account</h2>
             <form id="signup-form">
                 <div class="form-group">
-                    <label for="signup-name">Alias</label>
-                    <input type="text" id="signup-name" required placeholder="User-1">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required placeholder="Your Name">
                 </div>
                 <div class="form-group">
-                    <label for="signup-email">Transmission Node (Email)</label>
-                    <input type="email" id="signup-email" required placeholder="user@domain.com">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" required placeholder="you@domain.com">
                 </div>
                 <div class="form-group">
-                    <label for="signup-password">Encryption Key (Password)</label>
-                    <input type="password" id="signup-password" required placeholder="••••••••" minlength="6">
+                    <label for="signup-password">Password</label>
+                    <div class="pw-wrapper">
+                        <input type="password" id="signup-password" required placeholder="Min. 6 characters"
+                            minlength="6">
+                        <button type="button" class="pw-toggle" onclick="togglePassword('signup-password', this)"
+                            tabindex="-1" aria-label="Show password">
+                            <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg class="eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" width="18" height="18" style="display:none">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Role Level</label>
+                    <div class="custom-dropdown" id="role-dropdown">
+                        <div class="custom-dropdown__selected" id="role-selected">
+                            <span id="role-label">User</span>
+                            <svg class="custom-dropdown__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
+                        </div>
+                        <ul class="custom-dropdown__list" id="role-list">
+                            <li class="custom-dropdown__item active" data-value="user">
+                                <span class="custom-dropdown__icon">👤</span> User
+                            </li>
+                            <li class="custom-dropdown__item" data-value="admin">
+                                <span class="custom-dropdown__icon">🛡️</span> Admin
+                            </li>
+                        </ul>
+                        <input type="hidden" id="signup-role" value="user">
+                    </div>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn-primary w-100">Establish Link</button>
+                    <button type="submit" class="btn-primary w-100">Create Account</button>
                 </div>
             </form>
             <p id="signup-error" class="error-msg"></p>
@@ -128,38 +210,57 @@
     <!-- Forgot Password Modal -->
     <div id="forgot-modal" class="modal">
         <div class="modal-content glass-effect">
-            <span class="close-btn" onclick="closeModal('forgot-modal')">&times;</span>
+            <span class="close-btn" onclick="closeModal('forgot-modal')">✕</span>
             <h2 class="gradient-text">Recover Access</h2>
+
             <form id="forgot-form" class="active">
                 <div class="form-group">
-                    <label for="forgot-email">Identified Email</label>
-                    <input type="email" id="forgot-email" required placeholder="user@domain.com">
+                    <label for="forgot-email">Your Email Address</label>
+                    <input type="email" id="forgot-email" required placeholder="you@domain.com">
                 </div>
-                <button type="submit" class="btn-primary w-100">Send Recovery Pulse (OTP)</button>
+                <button type="submit" class="btn-primary w-100">Send OTP Code</button>
                 <p id="forgot-error" class="error-msg"></p>
             </form>
 
             <form id="reset-form" style="display: none;">
-                <p class="success-msg">OTP Sent. Check the transmission node.</p>
+                <p class="success-msg">OTP sent! Check your inbox.</p>
                 <div class="form-group">
-                    <label for="reset-otp">Recovery Pulse (OTP)</label>
+                    <label for="reset-otp">OTP Code</label>
                     <input type="text" id="reset-otp" required placeholder="000000">
                 </div>
                 <div class="form-group">
-                    <label for="reset-password">New Encryption Key (Password)</label>
-                    <input type="password" id="reset-password" required placeholder="••••••••" minlength="6">
+                    <label for="reset-password">New Password</label>
+                    <div class="pw-wrapper">
+                        <input type="password" id="reset-password" required placeholder="Min. 6 characters"
+                            minlength="6">
+                        <button type="button" class="pw-toggle" onclick="togglePassword('reset-password', this)"
+                            tabindex="-1" aria-label="Show password">
+                            <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg class="eye-off-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" width="18" height="18" style="display:none">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <button type="submit" class="btn-primary w-100">Reinitialize Link</button>
+                <button type="submit" class="btn-primary w-100">Reset Password</button>
                 <p id="reset-error" class="error-msg"></p>
             </form>
         </div>
     </div>
 
     <footer class="glass-effect footer">
-        <p>Built by <strong>Ashfaaq Feroz Muhammad</strong></p>
-        <p>Credit: Entri Elevate - MERN</p>
+        <p>Built by <strong>Ashfaaq Feroz Muhammad</strong> &nbsp;·&nbsp; Entri Elevate — MERN</p>
     </footer>
 
     <script src="app.js"></script>
 </body>
+
 </html>

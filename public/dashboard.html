@@ -4,31 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EvoStore Dashboard</title>
+    <title>EvoStore — Dashboard</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="dashboard-body">
+
     <!-- Navigation -->
     <nav class="navbar glass-effect">
-        <div class="logo">EvoStore Terminal</div>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+        </div>
         <div class="nav-links">
             <span id="user-name-display" class="gradient-text mr-2"></span>
-            <button id="logout-btn" class="btn-glow-alt" onclick="logout()">Terminate Link</button>
+            <button id="logout-btn" class="btn-glow-alt" onclick="logout()">Sign Out</button>
         </div>
     </nav>
 
     <div class="dashboard-container">
+
         <!-- Sidebar -->
         <aside class="sidebar glass-effect">
             <ul class="sidebar-nav">
-                <li class="active">Intelligence Center</li>
-                <li>Data Matrix</li>
-                <li>System Logs</li>
-                <li>Security Protocols</li>
+                <li class="active" data-icon="🧠">Intelligence Center</li>
+                <li data-icon="📦">Data Matrix</li>
+                <li data-icon="📋">System Logs</li>
+                <li data-icon="🔐">Security Protocols</li>
             </ul>
         </aside>
 
@@ -36,37 +44,40 @@
         <main class="main-content">
             <header>
                 <h1 class="gradient-text">Welcome to the Core, Operator</h1>
-                <p>Your secure link is active. Accessing backend data modules...</p>
+                <p>Your secure session is active. Fetching backend data modules…</p>
             </header>
 
+            <!-- Intelligence Center Tab -->
             <div id="tab-intelligence" class="dashboard-tab active-tab">
                 <div class="grid-modules">
+
                     <!-- User Profile Module -->
                     <div class="module-card glass-effect">
                         <h3>Operator Profile</h3>
                         <div id="profile-data">
-                            <p class="loading-text">Decrypting...</p>
+                            <p class="loading-text">Decrypting…</p>
                         </div>
                     </div>
 
                     <!-- Product Recommendations Module -->
                     <div class="module-card glass-effect lg-col">
                         <h3>RapidMiner Predictive Engine</h3>
-                        <p class="sub-text mb-2">Analyzing heuristic behavior based on your order history matrix.</p>
+                        <p class="sub-text mb-2">Analysing behavioural matrices based on your order history.</p>
                         <div id="recommendations-data" class="products-grid">
-                            <p class="loading-text">Consulting Neural Network...</p>
+                            <p class="loading-text">Consulting Neural Network…</p>
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <!-- Data Matrix Tab -->
             <div id="tab-data-matrix" class="dashboard-tab" style="display: none;">
                 <div class="module-card glass-effect mb-2">
-                    <h3>Data Matrix: Products Grid</h3>
-                    <p class="sub-text mb-2">Live synchronization with MongoDB Products Cluster.</p>
+                    <h3>Products Grid</h3>
+                    <p class="sub-text mb-2">Live sync with MongoDB Products Cluster.</p>
                     <div id="all-products-grid" class="products-grid">
-                        <p class="loading-text">Fetching Node Data...</p>
+                        <p class="loading-text">Fetching nodes…</p>
                     </div>
                 </div>
             </div>
@@ -74,10 +85,10 @@
             <!-- System Logs Tab -->
             <div id="tab-system-logs" class="dashboard-tab" style="display: none;">
                 <div class="module-card glass-effect">
-                    <h3>System Action Logs</h3>
-                    <p class="sub-text mb-2">Recent transactions and orders bound to your ID Stamp.</p>
+                    <h3>Order Logs</h3>
+                    <p class="sub-text mb-2">Recent transactions bound to your account ID.</p>
                     <div id="orders-list">
-                        <p class="loading-text">Retrieving Transaction Blocks...</p>
+                        <p class="loading-text">Retrieving transaction blocks…</p>
                     </div>
                 </div>
             </div>
@@ -85,21 +96,26 @@
             <!-- Security Protocols Tab -->
             <div id="tab-security" class="dashboard-tab" style="display: none;">
                 <div class="module-card glass-effect">
-                    <h3 style="color: #f56565;">Active Security Protocols</h3>
-                    <ul style="list-style-type: square; padding-left: 20px; color: #a0aec0; margin-top: 1rem;">
-                        <li><strong>JWT Encryption:</strong> ONLINE (RSA-256)</li>
-                        <li><strong>Bcrypt Hashing:</strong> 10 Rounds Enabled</li>
-                        <li><strong>CORS Policy:</strong> Strictly Enforced</li>
-                        <li><strong>RBAC Routing:</strong> Active</li>
+                    <h3>Active Security Protocols</h3>
+                    <p class="sub-text" style="margin-bottom:0.5rem;">All systems nominal.</p>
+                    <ul class="security-list">
+                        <li><strong>JWT Encryption:</strong>&nbsp; ONLINE — RSA-256 <span
+                                class="badge badge-green">Active</span></li>
+                        <li><strong>Bcrypt Hashing:</strong>&nbsp; 10 Rounds Enabled <span
+                                class="badge badge-green">Active</span></li>
+                        <li><strong>CORS Policy:</strong>&nbsp; Strictly Enforced <span
+                                class="badge badge-green">Active</span></li>
+                        <li><strong>RBAC Routing:</strong>&nbsp; Role-Based Control <span
+                                class="badge badge-green">Active</span></li>
                     </ul>
                 </div>
             </div>
+
         </main>
     </div>
 
     <script src="app.js"></script>
     <script>
-        // Check authentication
         if (!localStorage.getItem('token')) {
             window.location.href = 'index.html';
         }
