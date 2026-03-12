@@ -60,6 +60,16 @@ ME4 ecommerce-backend 1.0/
    ```
 2. Configure `.env`:
    Make sure you have a valid MongoDB instance running. Update the `MONGODB_URI` in `.env`.
+   
+   **For OTP Emails (Nodemailer) to work:**
+   You must use a **Gmail App Password** (regular passwords will be blocked by Google).
+   - Go to your Google Account Settings -> Security -> 2-Step Verification.
+   - Scroll to the bottom and click "App passwords".
+   - Generate a new password for "Mail" / "Mac" and paste that 16-character code into your `.env`:
+   ```env
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_16_digit_app_password
+   ```
 3. Start the server (Development mode):
    ```bash
    npm run dev

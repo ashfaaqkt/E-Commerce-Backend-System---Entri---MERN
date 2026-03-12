@@ -79,6 +79,30 @@ const sendTokenResponse = (user, statusCode, res) => {
     });
 };
 
+const nodemailer = require('nodemailer');
+
+// Helper to send email
+const sendEmail = async (options) => {
+    const transporter = nodemailer.createTransport({
+        service: 'gmail', // You can change this to SendGrid, Mailgun, etc.
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    });
+
+    const message = {
+        from: `${process.env.EMAIL_USER}`,
+        to: options.email,
+        subject: options.subject,
+        text: options.message,
+        html: options.html
+    };
+
+    const info = await transporter.sendMail(message);
+    console.log('Message sent: %s', info.messageId);
+};
+
 // @desc    Forgot password
 // @route   POST /api/auth/forgotpassword
 // @access  Public
@@ -90,18 +114,41 @@ exports.forgotPassword = async (req, res, next) => {
             return res.status(404).json({ success: false, error: 'There is no user with that email' });
         }
 
-        // Get reset token
+        // Get reset token (OTP)
         const resetToken = user.getResetPasswordToken();
-
         await user.save({ validateBeforeSave: false });
 
-        // Currently, we just return the OTP. In a real scenario, use nodemailer.
-        // We will mock sending email or actually try to send if ENV has real credentials.
-        res.status(200).json({
-            success: true,
-            data: 'Email sent',
-            otp: resetToken // sending it in response for dev purposes
-        });
+        // Create HTML Email Template
+        const message = `
+            <h2>Password Reset Request</h2>
+            <p>You are receiving this email because you (or someone else) requested a password reset for your EvoStore account.</p>
+            <p>Your OTP Code is: <b style="font-size: 24px; color: #1a56db; letter-spacing: 2px;">${resetToken}</b></p>
+            <p>This code is valid for 10 minutes.</p>
+        `;
+
+        try {
+            // Attempt to send the email
+            await sendEmail({
+                email: user.email,
+                subject: 'EvoStore - Password Reset OTP Code',
+                html: message
+            });
+
+            res.status(200).json({
+                success: true,
+                data: 'Email sent successfully',
+                // ONLY expose OTP in dev mode for debugging, otherwise remove `otp` from response.
+                // We're keeping it here for demonstration until you set up real SMTP.
+                otp: process.env.NODE_ENV === 'development' ? resetToken : undefined
+            });
+        } catch (err) {
+            console.error(err);
+            user.resetPasswordOtp = undefined;
+            user.resetPasswordOtpExpire = undefined;
+            await user.save({ validateBeforeSave: false });
+
+            return res.status(500).json({ success: false, error: 'Email could not be sent' });
+        }
     } catch (err) {
         next(err);
     }
