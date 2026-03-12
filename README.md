@@ -5,6 +5,10 @@ A robust, scalable backend and futuristic frontend application for an E-Commerce
 **Developed by:** Ashfaaq Feroz Muhammad
 **Credit:** Entri Elevate - MERN - ME4
 
+## Live Demo
+Check out the fully functional deployment on Vercel:
+👉 **[E-Commerce Intelligence Engine Dashboard](https://e-commerce-backend-system-entri-mer.vercel.app)**
+
 ## Core Features
 1. **Authentication & Authorization**: JWT token-based authentication, bcrypt password encryption, custom Role selection dropdown, and role-based access.
 2. **CRUD Operations**: Efficient API endpoints for Products, Orders, and User Profiles.
