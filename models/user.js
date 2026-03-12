@@ -25,8 +25,6 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'admin', 'guest'],
         default: 'user'
     },
-    resetPasswordOtp: String,
-    resetPasswordOtpExpire: Date,
     address: {
         street: String,
         city: String,
@@ -65,20 +63,6 @@ userSchema.methods.getSignedJwtToken = function () {
 // Match user entered password to hashed password in database
 userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
-};
-
-// Generate and hash password token (OTP)
-userSchema.methods.getResetPasswordToken = function () {
-    // Generate a simple 6-digit OTP for this example
-    const resetToken = Math.floor(100000 + Math.random() * 900000).toString();
-
-    // Set to schema
-    this.resetPasswordOtp = resetToken;
-
-    // Set expire (10 minutes)
-    this.resetPasswordOtpExpire = Date.now() + 10 * 60 * 1000;
-
-    return resetToken;
 };
 
 module.exports = mongoose.model('User', userSchema);

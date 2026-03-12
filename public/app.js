@@ -99,58 +99,6 @@ if (document.getElementById('login-form')) {
         }
     });
 
-    document.getElementById('forgot-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('forgot-email').value;
-        const errorMsg = document.getElementById('forgot-error');
-
-        try {
-            const res = await fetch(`${apiUrl}/auth/forgotpassword`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email })
-            });
-            const data = await res.json();
-
-            if (data.success) {
-                document.getElementById('forgot-form').style.display = 'none';
-                document.getElementById('reset-form').style.display = 'block';
-                // Attach the email for the next request
-                localStorage.setItem('temp_reset_email', email);
-            } else {
-                errorMsg.textContent = data.error;
-            }
-        } catch (err) {
-            errorMsg.textContent = 'Network Error.';
-        }
-    });
-
-    document.getElementById('reset-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = localStorage.getItem('temp_reset_email');
-        const otp = document.getElementById('reset-otp').value;
-        const newPassword = document.getElementById('reset-password').value;
-        const errorMsg = document.getElementById('reset-error');
-
-        try {
-            const res = await fetch(`${apiUrl}/auth/resetpassword`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, otp, newPassword })
-            });
-            const data = await res.json();
-
-            if (data.success) {
-                localStorage.removeItem('temp_reset_email');
-                localStorage.setItem('token', data.token);
-                window.location.href = 'dashboard.html';
-            } else {
-                errorMsg.textContent = data.error;
-            }
-        } catch (err) {
-            errorMsg.textContent = 'Network Error.';
-        }
-    });
 }
 
 // Dashboard Handlers (dashboard.html)
