@@ -65,6 +65,6 @@ ME4 ecommerce-backend 1.0/
    npm run dev
    ```
 4. Access Frontend Toolkit:
-   Navigate to `http://localhost:5000` inside a modern web browser.
+   Navigate to `http://localhost:5001` inside a modern web browser.
 
 See `deployment_instructions.txt` for server setup and Vercel hosting instructions.
