@@ -3,7 +3,7 @@
 A robust, scalable backend and futuristic frontend application for an E-Commerce Intelligence system. This project features strong JWT authentication, Role-Based Access Control (RBAC), simulated RapidMiner product recommendations, and custom frontend capabilities.
 
 **Developed by:** Ashfaaq Feroz Muhammad
-**Credit:** Entri Elevate - MERN
+**Credit:** Entri Elevate - MERN - ME4
 
 ## Core Features
 1. **Authentication & Authorization**: JWT token-based authentication, bcrypt password encryption, custom Role selection dropdown, and role-based access.
@@ -66,5 +66,3 @@ ME4 ecommerce-backend 1.0/
    ```
 4. Access Frontend Toolkit:
    Navigate to `http://localhost:5001` inside a modern web browser.
-
-See `deployment_instructions.txt` for server setup and Vercel hosting instructions.
